@@ -10,6 +10,7 @@ Features:
 * Test Queries
 
 Generated Documents:
+
     {
         "id": "84e0d2ad-f41e-47a3-94d0-6c3534a3ca65",
         "FirstName": "Mathilda",
