@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace DocDbTestBench
 {
@@ -111,6 +112,17 @@ namespace DocDbTestBench
                     _collection = await _client.CreateDocumentCollectionAsync(_database.CollectionsLink, documentCollection);
 
                     writeToConsoleWindow("\tCollection created " + _collectionName);
+
+                    // create UDF
+                    var udfFileName = @"js\FullName.js";
+                    var udfId = System.IO.Path.GetFileNameWithoutExtension(udfFileName);
+                    var udf = new UserDefinedFunction
+                    {
+                        Id = udfId,
+                        Body = File.ReadAllText(udfFileName),
+                    };
+
+                    await _client.CreateUserDefinedFunctionAsync(_collection.SelfLink, udf);
                 }
                 else
                 {
