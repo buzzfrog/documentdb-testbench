@@ -1,0 +1,94 @@
+﻿<Window x:Class="DocDbTestBench.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DocDbTestBench"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        Title="DocDB Test Bench" Height="500" Width="900" ResizeMode="CanMinimize">
+
+    <Grid>
+        <GroupBox Header="DocumentDB Account Settings" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" >
+            <StackPanel>
+                <GroupBox Header="Account">
+                    <TextBox x:Name="fieldAccount" />
+                </GroupBox>
+                <GroupBox Header="Key">
+                    <TextBox x:Name="fieldKey" />
+                </GroupBox>
+                <GroupBox Header="Database">
+                    <TextBox x:Name="fieldDatabase" />
+                </GroupBox>
+                <GroupBox Header="Collection">
+                    <TextBox x:Name="fieldCollection" />
+                </GroupBox>
+                <Button x:Name="commandCreateDocumentDbDatabaseAndCollection" Height="23" Content="Create" Click="commandCreateDocumentDbDatabaseAndCollection_Click" />
+            </StackPanel>
+        </GroupBox>
+        <StackPanel HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="200">
+            <GroupBox Header="Generate Data" >
+                <StackPanel>
+                    <GroupBox Header="Number Of Records">
+                        <TextBox x:Name="fieldNumberOfRecords" Text="100" TextAlignment="Right"/>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Start Id:</Label>
+                        <TextBox x:Name="fieldStartId" Text="1" Height="20" Width="50" TextAlignment="Right" Margin="82,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Use GUIDs as Id:</Label>
+                        <CheckBox x:Name="fieldUseGuidsForId" Height="16" Margin="70,0,0,0" />
+                    </StackPanel>
+                    <Button x:Name="commandGenerateData" Content="Generate Data" Click="commandGenerateData_Click" />
+                    <Button x:Name="commandCountData" Content="Count Data" Click="commandCountData_Click" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Update / Delete" >
+                <StackPanel>
+                    <Button x:Name="commandUpdateRecord" Content="Update" Click="commandUpdateRecord_Click" />
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Delete id:</Label>
+                        <TextBox x:Name="fieldDeleteId" Text="0" Width="50" Height="19" TextAlignment="Right" Margin="78,0,0,0" />
+                    </StackPanel>
+                    <Button x:Name="commandDeleteRecord" Content="Delete" Click="commandDeleteRecord_Click" />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <Border BorderThickness="2" BorderBrush="#FF999999" Margin="15,268,262.333,26.667">
+            <ScrollViewer x:Name="scrollFieldConsole">
+                <TextBlock x:Name="fieldConsole" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFEEEEEE" />
+            </ScrollViewer>
+        </Border>
+        <Border BorderThickness="2" BorderBrush="#FF999999" Margin="431,58,19.333,236.667">
+            <ScrollViewer x:Name="scrollFieldQuery">
+                <TextBox x:Name="fieldQuery" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFEEEEEE" AcceptsReturn="True" />
+            </ScrollViewer>
+        </Border>
+        <Label Content="Console / Result" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top"/>
+        <Border Margin="636,268,19.333,26.667" BorderThickness="2" BorderBrush="#FF999999" Padding="5">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" >
+            <Run Text="Links" />
+            <LineBreak />
+            <Hyperlink NavigateUri="http://azure.microsoft.com/documentation/services/documentdb/" RequestNavigate="Hyperlink_RequestNavigate">Documentation main page</Hyperlink>
+            <LineBreak />
+            <Hyperlink NavigateUri="http://azure.microsoft.com/documentation/articles/documentdb-sql-query/" RequestNavigate="Hyperlink_RequestNavigate">Query DocumentDB</Hyperlink>
+            <LineBreak />
+            <Hyperlink NavigateUri="http://msdn.microsoft.com/en-us/library/azure/dn782250.aspx" RequestNavigate="Hyperlink_RequestNavigate">DocumentDB SQL Query Language</Hyperlink>
+            </TextBlock>
+        </Border>
+        <GroupBox Header="Query Data" HorizontalAlignment="Left" Margin="431,10,0,0" VerticalAlignment="Top" Width="200" >
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Ex 1" Click="commandSelectQuery" Tag="ex1" Margin="0,0,5,0" />
+                <Button Content="Ex 2" Click="commandSelectQuery" Tag="ex2" Margin="0,0,5,0" />
+                <Button Content="Ex 3" Click="commandSelectQuery" Tag="ex3" Margin="0,0,5,0" />
+                <Button Content="Ex 4" Click="commandSelectQuery" Tag="ex4" Margin="0,0,5,0" />
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="commandRunQuery" Content="Run" HorizontalAlignment="Left" Margin="799,239,0,0" VerticalAlignment="Top" Width="75" Click="commandRunQuery_Click"/>
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal"  Height="24" Margin="535,244,0,0" VerticalAlignment="Top" Width="101">
+            <Label>Update View:</Label>
+            <CheckBox x:Name="useUpdateView" IsChecked="True" Height="16"  />
+        </StackPanel>
+    </Grid>
+</Window>
