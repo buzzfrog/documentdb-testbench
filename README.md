@@ -20,8 +20,8 @@ Generated Documents:
         "Gender": "F"
     }
 
-id - Could be an integer or an Guid. (Easier to use Guid when creating a large collection of documents)
-FirstName and LastName - All names is imported from a Swedish name database, so it will be (maybe) strange names and strange characters.
+*id* - Could be an integer or an Guid. (Easier to use Guid when creating a large collection of documents)
+*FirstName* and *LastName* - All names is imported from a Swedish name database, so it will be (maybe) strange names and strange characters.
 
 
 
